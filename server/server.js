@@ -17,7 +17,6 @@ server.listen(port, ()=> {
 });
 
 io.on('connection', (socket) =>{
-  socket.emit('newMessage', generateMessage('Kridi','This is our first message'))
   socket.broadcast.emit('newMessage', generateMessage('Kridi', 'New user joined'))
   socket.on('createMessage', (message) => {
     io.emit('newMessage', generateMessage(message.from, message.message))
